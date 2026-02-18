@@ -1,5 +1,5 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const QRCode = require('qrcode');
+const qrcode = require('qrcode-terminal');
 const { google } = require('googleapis');
 
 // Ganti dengan nama file JSON service account
@@ -35,7 +35,9 @@ const client = new Client({
 });
 
 
-client.on('qr', async qr => {
+client.on('qr', qr => {
+  qrcode.generate(qr, { small: true });
+});
   const url = await QRCode.toDataURL(qr);
   console.log('Scan QR ini di browser:');
   console.log(url);
@@ -84,5 +86,6 @@ client.on('message', async message => {
 });
 
 client.initialize();
+
 
 
