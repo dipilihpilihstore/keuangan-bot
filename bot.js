@@ -36,12 +36,10 @@ const client = new Client({
 
 
 client.on('qr', qr => {
+  console.log('Scan QR berikut:');
   qrcode.generate(qr, { small: true });
 });
-  const url = await QRCode.toDataURL(qr);
-  console.log('Scan QR ini di browser:');
-  console.log(url);
-});
+
 
 
 client.on('ready', () => {
@@ -86,6 +84,7 @@ client.on('message', async message => {
 });
 
 client.initialize();
+
 
 
 
