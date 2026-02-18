@@ -37,7 +37,7 @@ const client = new Client({
 
 client.on('qr', qr => {
   console.log('Scan QR berikut:');
-  qrcode.generate(qr, { small: true });
+  qrcode.generate(qr, { small: false });
 });
 
 
@@ -84,6 +84,7 @@ client.on('message', async message => {
 });
 
 client.initialize();
+
 
 
 
