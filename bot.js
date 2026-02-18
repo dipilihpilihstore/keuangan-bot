@@ -9,7 +9,7 @@ const KEYFILE = 'service-account.json';
 const SPREADSHEET_ID = '1qJ6B4sv4BnwjlYCJrNrNlNvxuOzqPH5SzX241fd8Hd0';
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: KEYFILE,
+  credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
@@ -84,6 +84,7 @@ client.on('message', async message => {
 });
 
 client.initialize();
+
 
 
 
