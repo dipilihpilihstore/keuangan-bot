@@ -29,7 +29,11 @@ async function addToSheet(data) {
 
 const client = new Client({
   authStrategy: new LocalAuth(),
+  puppeteer: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  },
 });
+
 
 client.on('qr', qr => {
   qrcode.generate(qr, { small: true });
@@ -77,3 +81,4 @@ client.on('message', async message => {
 });
 
 client.initialize();
+
